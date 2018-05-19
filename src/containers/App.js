@@ -59,9 +59,22 @@ class App extends Component {
     });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] inside shouldComponentUpdate', nextProps, nextState);
+    return nextState.persons !== this.state.persons || 
+          nextState.showPersons !== this.state.showPersons;
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] inside componentWillUpdate', nextProps, nextState);
+  }
+  componentDidUpdate(){
+    console.log('[UPDATE App.js] inside componentDidUpdate');
+  }
+
   render() {
     return (
       <div className={classes.App}>
+      <button onClick={ () => { this.setState({showPersons: true})}}>Show Persons</button>
         <Cockpit
           showPersons={this.state.showPersons}
           persons={this.state.persons}

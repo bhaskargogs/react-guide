@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Cockpit.css";
+import Aux from '../../hoc/Aux';
 
 const cockpit = (props) => {
   const assignedClasses = [];
@@ -10,16 +11,16 @@ const cockpit = (props) => {
     assignedClasses.push(classes.bold);
   }
   return (
-    <div className={classes.Cockpit}>
+    <Aux>
       <h1> Hi, I am a React App </h1>
-      <p className={assignedClasses.join(" ")}> This is really working! </p>
+      <p className={assignedClasses.join(' ')}> This is really working! </p>
       <button
-        className={props.showPersons ? classes.Red : ""}
+        className={props.showPersons ? [classes.Button, classes.Red].join(' ') : classes.Button}
         onClick={props.toggled}
       >
         Toggle Persons
       </button>
-    </div>
+    </Aux>
   );
 };
 export default cockpit;
